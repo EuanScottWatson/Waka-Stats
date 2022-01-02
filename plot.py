@@ -9,26 +9,22 @@ LANGUAGES = ['Python', 'Swift', 'Cocoa', 'Kotlin', 'Haskell', 'Java', 'Other', '
 
 
 class Day:
-    def __init__(self, date: str, coding: float, building: float, languages: dict[str, float]) -> None:
+    def __init__(self, date: str, coding: float, languages: dict[str, float]) -> None:
         self.date = date
         self.coding = 0 if coding is None else coding
-        self.building = 0 if building is None else building
         self.languages = languages
 
     def __str__(self) -> str:
-        return f"{self.date}:\n\tCoding: {self.coding}\n\tBuilding: {self.building}"
+        return f"{self.date}:\n\tCoding: {self.coding}"
+
+def decimal_to_string(hrs: float) -> str:
+    return f"{round(hrs // 1)} hours {round((hrs % 1) * 60)} minutes"
 
 
 def extract_coding(data):
     days = []
     for day in data:
-        cats = day['categories']
-        coding, building = None, None
-        for cat in cats:
-            if cat['name'] == "Coding":
-                coding = float(cat['decimal'])
-            if cat['name'] == "Building":
-                building = float(cat['decimal'])
+        coding = float(day['grand_total']['decimal'])
 
         langs = day['languages']
         supported = {l: 0 for l in LANGUAGES}
@@ -38,23 +34,24 @@ def extract_coding(data):
             else:
                 supported['Other'] += float(lang['decimal'])
 
-        days.append(Day(day['date'], coding, building, supported))
+        days.append(Day(day['date'], coding, supported))
     
-    total = round(sum(map(lambda x: x.coding + x.building, days)), 2)
+    max_in_day = max(map(lambda x: x.coding, days))
+    total = round(sum(map(lambda x: x.coding, days)), 2)
     total_langs = Counter({l: 0 for l in LANGUAGES})
 
     for d in days:
         total_langs += Counter(d.languages)
 
     total_langs = dict(sorted(total_langs.items(), key=lambda i: i[1], reverse=True))
-    average = total / sum(map(lambda x: 1 if x.coding + x.building > 0 else 0, days))
+    average = total / sum(map(lambda x: 1 if x.coding > 0 else 0, days))
 
     print(f"This data ranges from {days[0].date} to {days[-1].date}")
-    print(f"You spent {total} hours coding equalling {average} hours per day")
+    print(f"You spent {decimal_to_string(total)} coding equalling {decimal_to_string(average)} per day")
     print("Of which you spent:")
     for l, t in total_langs.items():
-        print(f"\t{round(t, 2)} hours coding in {l}")
-
+        print(f"\t{decimal_to_string(t)} coding in {l}")
+    print(f"The most you coded in one day was: {decimal_to_string(max_in_day)}")
 
     return days
 
@@ -145,7 +142,6 @@ def plot(days):
 
     timings = {l: [] for l in LANGUAGES}
     timings['Coding'] = list(map(lambda x: x.coding, days))
-    timings['Building'] = list(map(lambda x: x.building, days))
 
     for d in days:
         for l, t in d.languages.items():

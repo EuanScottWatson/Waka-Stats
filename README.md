@@ -17,16 +17,17 @@ It will also print out the total statistics in the command line, for example:
 
 ```
 This data ranges from 2021-08-11 to 2022-01-02
-You spent 176.28 hours coding equalling 2.3504 hours per day
+You spent 176 hours 24 minutes coding equalling 2 hours 21 minutes per day
 Of which you spent:
-        74.46 hours coding in Python
-        39.69 hours coding in Swift
-        17.2 hours coding in Cocoa
-        12.2 hours coding in Java
-        11.43 hours coding in Kotlin
-        7.68 hours coding in Other
-        6.82 hours coding in Markdown
-        5.68 hours coding in Haskell
+        74 hours 28 minutes coding in Python
+        39 hours 41 minutes coding in Swift
+        17 hours 12 minutes coding in Cocoa
+        12 hours 12 minutes coding in Java
+        11 hours 26 minutes coding in Kotlin
+        7 hours 41 minutes coding in Other
+        6 hours 49 minutes coding in Markdown
+        5 hours 41 minutes coding in Haskell
+The most you coded in one day was: 8 hours 32 minutes
 ```
 
 You just need to include your own json file from Wakatime and call it `data.json` :)
