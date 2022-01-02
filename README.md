@@ -11,7 +11,7 @@ This would track for C, C++ and C# too. <br>
 You can click on the interactive legend to show and hide lines. `Middle-Click` to show all the lines and `Right-Click` to hide them all. <br>
 Here is an example of my Year in Code for 2021-2022, i.e. from when I was introduced to Waka-Time in August until the New Year:
 
-<img src="example.png" alt="drawing" width="800"/>
+<img src="graph.png" alt="drawing" width="800"/>
 
 It will also print out the total statistics in the command line, for example:
 
