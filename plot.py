@@ -47,9 +47,10 @@ def extract_coding(data):
         total_langs += Counter(d.languages)
 
     total_langs = dict(sorted(total_langs.items(), key=lambda i: i[1], reverse=True))
+    average = total / sum(map(lambda x: 1 if x.coding + x.building > 0 else 0, days))
 
     print(f"This data ranges from {days[0].date} to {days[-1].date}")
-    print(f"You spent {total} hours coding.")
+    print(f"You spent {total} hours coding equalling {average} hours per day")
     print("Of which you spent:")
     for l, t in total_langs.items():
         print(f"\t{round(t, 2)} hours coding in {l}")

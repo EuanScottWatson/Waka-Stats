@@ -16,7 +16,8 @@ Here is an example of my Year in Code for 2021-2022
 It will also print out the total statistics in the command line, for example:
 
 ```
-You spent 176.28 hours coding.
+This data ranges from 2021-08-11 to 2022-01-02
+You spent 176.28 hours coding equalling 2.3504 hours per day
 Of which you spent:
         74.46 hours coding in Python
         39.69 hours coding in Swift
@@ -28,4 +29,4 @@ Of which you spent:
         5.68 hours coding in Haskell
 ```
 
-You just need to include your own json from Wakatime and call it `data.json`
+You just need to include your own json file from Wakatime and call it `data.json`
