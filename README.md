@@ -9,7 +9,7 @@ python plot.py C C++ C#
 ```
 This would track for C, C++ and C# too. <br>
 You can click on the interactive legend to show and hide lines. `Middle-Click` to show all the lines and `Right-Click` to hide them all. <br>
-Here is an example of my Year in Code for 2021-2022
+Here is an example of my Year in Code for 2021-2022, i.e. from when I was introduced to Waka-Time in August until the New Year:
 
 <img src="example.png" alt="drawing" width="800"/>
 
@@ -29,4 +29,4 @@ Of which you spent:
         5.68 hours coding in Haskell
 ```
 
-You just need to include your own json file from Wakatime and call it `data.json`
+You just need to include your own json file from Wakatime and call it `data.json` :)
