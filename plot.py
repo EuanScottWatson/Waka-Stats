@@ -5,7 +5,7 @@ import matplotlib.dates as mdates
 import datetime as dt
 from collections import Counter
 
-LANGUAGES = ['Python', 'Swift', 'Cocoa', 'Kotlin', 'Haskell', 'Java', 'Other', 'Markdown']
+LANGUAGES = ['Python', 'Swift', 'Cocoa', 'Kotlin', 'Haskell', 'Java', 'Other', 'Markdown', 'C++']
 
 
 class Day:
