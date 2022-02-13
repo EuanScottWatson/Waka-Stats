@@ -3,6 +3,7 @@ import sys
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import datetime as dt
+import numpy as np
 from collections import Counter
 
 LANGUAGES = ['Python', 'Swift', 'Cocoa', 'Kotlin', 'Haskell', 'Java', 'Other', 'Markdown', 'C++']
@@ -36,8 +37,12 @@ def extract_coding(data):
 
         days.append(Day(day['date'], coding, supported))
     
-    max_in_day = max(map(lambda x: x.coding, days))
-    total = round(sum(map(lambda x: x.coding, days)), 2)
+    coding_values = list(map(lambda x: x.coding, days))
+
+    max_in_day = max(coding_values)
+    day_of_max = days[coding_values.index(max_in_day)].date
+    dom_formatted = dt.datetime.strptime(day_of_max, '%Y-%m-%d').strftime('%m/%d/%y')
+    total = round(sum(coding_values), 2)
     total_langs = Counter({l: 0 for l in LANGUAGES})
 
     for d in days:
@@ -51,7 +56,7 @@ def extract_coding(data):
     print("Of which you spent:")
     for l, t in total_langs.items():
         print(f"\t{decimal_to_string(t)} coding in {l}")
-    print(f"The most you coded in one day was: {decimal_to_string(max_in_day)}")
+    print(f"The most you coded in one day was {dom_formatted} where you coded for {decimal_to_string(max_in_day)}")
 
     return days
 
